@@ -17,12 +17,8 @@ ext {
 }
 
 dependencies {
-    implementation ('com.sparkjava:spark-core:2.9.1') {
-        exclude group: 'ch.qos.logback', module: 'logback-classic'
-    }
-    implementation 'org.slf4j:slf4j-api:1.7.25'
-    implementation 'org.slf4j:slf4j-jdk14:1.7.25'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'com.sparkjava:spark-core:2.9.1'
+    implementation 'org.slf4j:slf4j-simple:1.7.21'
 }
 
 task fatJar(type: Jar) {

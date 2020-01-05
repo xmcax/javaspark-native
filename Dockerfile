@@ -9,8 +9,8 @@ RUN gu install native-image
 WORKDIR /graalvm-demo
 COPY . /graalvm-demo
 
-RUN ./gradlew fatJar
-RUN native-image --verbose --enable-http --static -H:+ReportUnsupportedElementsAtRuntime -jar /graalvm-demo/build/libs/javaspark-native-1.0-SNAPSHOT-fatjar.jar
+RUN ./gradlew clean fatJar
+RUN native-image --verbose --enable-http -H:+ReportUnsupportedElementsAtRuntime --no-fallback -jar /graalvm-demo/build/libs/javaspark-native-1.0-SNAPSHOT-fatjar.jar
 
 
 FROM adoptopenjdk/openjdk11:x86_64-alpine-jdk-11.0.3_7-slim
