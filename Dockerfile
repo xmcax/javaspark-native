@@ -25,4 +25,4 @@ WORKDIR /sparkjava
 COPY --from=build-env /sparkjava/javaspark-native-1.0-SNAPSHOT-fatjar .
 
 EXPOSE 8080
-ENTRYPOINT ./javaspark-native-1.0-SNAPSHOT-fatjar
+CMD ["./javaspark-native-1.0-SNAPSHOT-fatjar"]
