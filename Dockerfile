@@ -15,7 +15,7 @@ RUN native-image --verbose --enable-http --static -H:+ReportUnsupportedElementsA
 
 FROM adoptopenjdk/openjdk11:x86_64-alpine-jdk-11.0.3_7-slim
 WORKDIR /graalvm-demo
-COPY --from=0 /graalvm-demo/build/libs/javaspark-native-1.0-SNAPSHOT-fatjar .
+COPY --from=0 /graalvm-demo/javaspark-native-1.0-SNAPSHOT-fatjar .
 RUN apk --update --no-cache add \
     curl \
     tar \
