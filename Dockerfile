@@ -10,7 +10,13 @@ WORKDIR /graalvm-demo
 COPY . /graalvm-demo
 
 RUN ./gradlew clean fatJar
-RUN native-image --verbose --enable-http -H:+ReportUnsupportedElementsAtRuntime --no-fallback -jar /graalvm-demo/build/libs/javaspark-native-1.0-SNAPSHOT-fatjar.jar
+RUN native-image --verbose \
+    --enable-http \
+    -H:+ReportUnsupportedElementsAtRuntime \
+    -H:+TraceClassInitialization \
+    --no-fallback \
+    --initialize-at-build-time=org.eclipse.jetty,org.slf4j,javax.servlet,org.sparkjava \
+    -jar /graalvm-demo/build/libs/javaspark-native-1.0-SNAPSHOT-fatjar.jar
 
 
 FROM adoptopenjdk/openjdk11:x86_64-alpine-jdk-11.0.3_7-slim
